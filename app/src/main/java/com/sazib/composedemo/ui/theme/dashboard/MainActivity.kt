@@ -18,23 +18,34 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.sazib.composedemo.R
 import com.sazib.composedemo.R.drawable
-import com.sazib.composedemo.ui.theme.White
 
 class MainActivity : ComponentActivity() {
   private val viewPagerPageCount = 3
@@ -54,12 +65,69 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .background(color = Color.White)
+        .background(color = Color.LightGray)
     ) {
 
       TopBar()
-      // Spacer(modifier = Modifier.padding(4.dp))
+      Spacer(modifier = Modifier.padding(8.dp))
+
+      val textState = remember { mutableStateOf(TextFieldValue("")) }
+      SearchView(textState)
+
     }
+  }
+
+  @Composable
+  fun SearchView(state: MutableState<TextFieldValue>) {
+    TextField(
+      value = state.value,
+      onValueChange = { value ->
+        state.value = value
+      },
+      modifier = Modifier
+        .fillMaxWidth(),
+      textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
+      leadingIcon = {
+        Icon(
+          Icons.Default.Search,
+          contentDescription = "",
+          modifier = Modifier
+            .padding(8.dp)
+            .size(24.dp)
+        )
+      },
+      trailingIcon = {
+        if (state.value != TextFieldValue("")) {
+          IconButton(
+            onClick = {
+              state.value =
+                TextFieldValue("")
+            }
+          ) {
+
+            Icon(
+              Icons.Default.Close,
+              contentDescription = "",
+              modifier = Modifier
+                .padding(8.dp)
+                .size(24.dp)
+            )
+          }
+        }
+      },
+      singleLine = true,
+      shape = RectangleShape,
+      colors = TextFieldDefaults.textFieldColors(
+        textColor = Color.White,
+        cursorColor = Color.White,
+        leadingIconColor = Color.White,
+        trailingIconColor = Color.White,
+        backgroundColor = Color.White,
+        focusedIndicatorColor = Color.Transparent,
+        unfocusedIndicatorColor = Color.Transparent,
+        disabledIndicatorColor = Color.Transparent
+      )
+    )
   }
 
   @OptIn(ExperimentalPagerApi::class)
@@ -73,7 +141,7 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
-        .background(color = Color.White)
+        .background(color = Color.LightGray)
         .padding(8.dp),
       state = state
     ) { page ->
@@ -101,7 +169,7 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .wrapContentWidth()
-        .background(color = White),
+        .background(color = Color.LightGray),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
