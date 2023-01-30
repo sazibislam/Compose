@@ -19,6 +19,11 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity
+        android:name=".ui.theme.dashboard.MainActivity"
+        android:screenOrientation="sensorPortrait" />
+
   </application>
 
 </manifest>
