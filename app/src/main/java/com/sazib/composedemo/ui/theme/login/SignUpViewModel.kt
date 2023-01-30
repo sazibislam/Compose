@@ -1,5 +1,6 @@
 package com.sazib.composedemo.ui.theme.login
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -18,5 +19,9 @@ class SignUpViewModel : ViewModel() {
 
   fun updatePassword(input: String) {
     password = input
+  }
+
+  fun login() {
+    Log.d("login button", "Button Clicked")
   }
 }

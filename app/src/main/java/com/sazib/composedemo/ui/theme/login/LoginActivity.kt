@@ -6,8 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -50,6 +52,9 @@ class LoginActivity : ComponentActivity() {
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+      Text(text = "Please login")
+      Spacer(modifier = Modifier.height(20.dp))
+
       OutlinedTextField(
         value = viewModel.username,
         onValueChange = { username_ -> viewModel.updateUsername(username_) },
@@ -69,7 +74,9 @@ class LoginActivity : ComponentActivity() {
       )
 
       Button(
-        onClick = {},
+        onClick = {
+          viewModel.login()
+        },
         modifier = Modifier
           .padding(8.dp)
       ) {
