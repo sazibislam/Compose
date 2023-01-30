@@ -1,14 +1,10 @@
 package com.sazib.composedemo.ui.theme.login
 
-import android.content.Context
-import android.content.Intent
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
-import com.sazib.composedemo.ui.theme.dashboard.MainActivity
 
 class SignUpViewModel : ViewModel() {
 

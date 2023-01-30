@@ -20,22 +20,32 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.sazib.composedemo.ui.theme.dashboard.MainActivity
 import com.sazib.composedemo.R
 import com.sazib.composedemo.ui.theme.White
+import com.sazib.composedemo.ui.theme.dashboard.MainActivity
 
 class LoginActivity : ComponentActivity() {
 
@@ -62,6 +72,8 @@ class LoginActivity : ComponentActivity() {
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
+      var passwordVisible by rememberSaveable { mutableStateOf(false) }
+
       LogoImage()
       Spacer(modifier = Modifier.height(20.dp))
       Text(text = "Please login")
@@ -79,17 +91,27 @@ class LoginActivity : ComponentActivity() {
         value = viewModel.password,
         onValueChange = { password_ -> viewModel.updatePassword(password_) },
         label = { Text("Password") },
-        visualTransformation = PasswordVisualTransformation(),
+        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         modifier = Modifier
-          .padding(8.dp)
+          .padding(8.dp),
+        trailingIcon = {
+          val image = if (passwordVisible)
+            Icons.Filled.Visibility
+          else Icons.Filled.VisibilityOff
+
+          val description = if (passwordVisible) "Hide password" else "Show password"
+
+          IconButton(onClick = { passwordVisible = !passwordVisible }) {
+            Icon(imageVector = image, description)
+          }
+        }
       )
 
       Button(
         onClick = {
-
           startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-
+          finish()
           // viewModel.login()
         },
         modifier = Modifier
