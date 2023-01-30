@@ -65,6 +65,9 @@ dependencies {
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+  //Horizontal Pager [viewpager]
+  implementation "com.google.accompanist:accompanist-pager:0.22.0-rc"
+
   //font
   implementation "androidx.compose.ui:ui-text-google-fonts:1.3.3"
 

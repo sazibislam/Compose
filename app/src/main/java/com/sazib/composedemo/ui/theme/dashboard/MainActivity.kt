@@ -8,21 +8,20 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
 import com.sazib.composedemo.R.drawable
 
 class MainActivity : ComponentActivity() {
@@ -33,41 +32,42 @@ class MainActivity : ComponentActivity() {
     }
   }
 
+  @OptIn(ExperimentalPagerApi::class)
   @Preview
   @Composable
   fun LoadUi() {
+
     Column(
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .background(color = Color(0xFFF2F2F2))
-        .verticalScroll(rememberScrollState())
+        .background(color = Color.White)
+        .padding(8.dp),
     ) {
+      val slideImage = remember { mutableStateOf(drawable.banner) }
+      HorizontalPager(
+        count = 3,
+        modifier = Modifier
+          .fillMaxWidth()
+          .wrapContentHeight()
+          .background(color = Color.White)
+      ) { page ->
 
-      Image(
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.Crop,
-        painter = painterResource(drawable.banner),
-        contentDescription = "Content description for visually impaired"
-      )
+        when (page) {
+          0 -> slideImage.value = drawable.banner
+          1 -> slideImage.value = drawable.banner
+          2 -> slideImage.value = drawable.banner
+        }
 
-      Column(modifier = Modifier.padding(16.dp)) {
-        Text(
-          text = "Happy Meal",
-          style = MaterialTheme.typography.body2
-        )
-        Spacer(modifier = Modifier.padding(top = 8.dp))
-        Text(
-          text = "800 calories",
-          style = MaterialTheme.typography.body1
-        )
-        Spacer(modifier = Modifier.padding(top = 8.dp))
-        Text(
-          text = "$5.99",
-          style = MaterialTheme.typography.body1,
-          fontSize = 30.sp
-        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+          Image(
+            painterResource(slideImage.value),
+            contentDescription = ""
+          )
+        }
       }
+      Spacer(modifier = Modifier.padding(4.dp))
+
     }
   }
 }
