@@ -15,6 +15,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +41,7 @@ class LoginActivity : ComponentActivity() {
   @Preview
   @Composable
   fun LoadUi() {
-    Column(
+      Column(
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
