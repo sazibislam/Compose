@@ -11,13 +11,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.sazib.composedemo.ui.theme.Purple200
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.sazib.composedemo.ui.theme.White
 
 class LoginActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
+    installSplashScreen()
     super.onCreate(savedInstanceState)
     setContent {
       LoadUi()
@@ -34,6 +34,8 @@ class LoginActivity : ComponentActivity() {
         .background(color = White)
         .verticalScroll(rememberScrollState())
     ) {
+
+
 
     }
   }
