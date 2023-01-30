@@ -1,4 +1,4 @@
-package com.sazib.composedemo
+package com.sazib.composedemo.ui.theme.dashboard
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sazib.composedemo.R.drawable
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
       Image(
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,
-        painter = painterResource(R.drawable.banner),
+        painter = painterResource(drawable.banner),
         contentDescription = "Content description for visually impaired"
       )
 
