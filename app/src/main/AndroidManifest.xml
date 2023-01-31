@@ -27,6 +27,7 @@
             android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".FilterActivity"
+            android:theme="@style/Theme.ComposeDemo"
             android:screenOrientation="sensorPortrait"
             android:exported="false"/>
 

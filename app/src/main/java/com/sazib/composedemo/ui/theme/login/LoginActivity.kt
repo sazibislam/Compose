@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.sazib.composedemo.FilterActivity
 import com.sazib.composedemo.R
 import com.sazib.composedemo.ui.theme.White
 import com.sazib.composedemo.ui.theme.dashboard.MainActivity
@@ -110,7 +111,7 @@ class LoginActivity : ComponentActivity() {
 
       Button(
         onClick = {
-          startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+          startActivity(Intent(this@LoginActivity, FilterActivity::class.java))
           finish()
           // viewModel.login()
         },
