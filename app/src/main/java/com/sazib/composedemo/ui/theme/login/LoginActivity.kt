@@ -62,7 +62,7 @@ class LoginActivity : ComponentActivity() {
 
   @Preview
   @Composable
-  fun LoadUi() {
+  private fun LoadUi() {
     Column(
       modifier = Modifier
         .fillMaxWidth()
@@ -124,7 +124,7 @@ class LoginActivity : ComponentActivity() {
   }
 
   @Composable
-  fun LogoImage() {
+  private fun LogoImage() {
 
     Column(
       modifier = Modifier
