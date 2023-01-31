@@ -46,7 +46,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.sazib.composedemo.FilterActivity
 import com.sazib.composedemo.R
 import com.sazib.composedemo.ui.theme.White
-import com.sazib.composedemo.ui.theme.dashboard.MainActivity
 
 class LoginActivity : ComponentActivity() {
 

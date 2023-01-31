@@ -2,35 +2,33 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sazib.composedemo">
 
+  <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/Theme.ComposeDemo">
+    <activity
+        android:name=".ui.theme.login.LoginActivity"
+        android:exported="true"
+        android:theme="@style/Theme.App.Starting">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.ComposeDemo">
-        <activity
-            android:name=".ui.theme.login.LoginActivity"
-            android:exported="true"
-            android:theme="@style/Theme.App.Starting">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    <activity
+        android:name=".ui.theme.dashboard.MainActivity"
+        android:screenOrientation="sensorPortrait" />
+    <activity
+        android:name=".FilterActivity"
+        android:exported="false"
+        android:screenOrientation="sensorPortrait"
+        android:theme="@style/Theme.ComposeDemo" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ui.theme.dashboard.MainActivity"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".FilterActivity"
-            android:theme="@style/Theme.ComposeDemo"
-            android:screenOrientation="sensorPortrait"
-            android:exported="false"/>
-
-    </application>
+  </application>
 
 </manifest>
