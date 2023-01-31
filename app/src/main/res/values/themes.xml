@@ -2,10 +2,15 @@
 <resources>
 
   <style name="Theme.ComposeDemo" parent="android:Theme.Material.Light.NoActionBar">
-    <item name="android:statusBarColor">@color/purple_700</item>
+    <item name="android:statusBarColor">@color/bg_color</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+    <item name="colorOnPrimary">@color/white</item>
   </style>
 
   <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="colorOnPrimary">@color/white</item>
     <item name="windowSplashScreenBackground">@color/white</item>
     <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
          animated drawable. One of these is required. -->

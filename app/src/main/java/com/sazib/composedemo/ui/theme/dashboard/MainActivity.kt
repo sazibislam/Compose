@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .background(color = Color.LightGray)
+        .background(color = Color.White)
     ) {
 
       TopBar()
@@ -141,7 +141,6 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
-        .background(color = Color.LightGray)
         .padding(8.dp),
       state = state
     ) { page ->
@@ -169,7 +168,7 @@ class MainActivity : ComponentActivity() {
       modifier = Modifier
         .fillMaxWidth()
         .wrapContentWidth()
-        .background(color = Color.LightGray),
+        .background(color = Color.Transparent),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
