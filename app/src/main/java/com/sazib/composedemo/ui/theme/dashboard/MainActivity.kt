@@ -3,8 +3,10 @@ package com.sazib.composedemo.ui.theme.dashboard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -144,16 +146,6 @@ class MainActivity : ComponentActivity() {
             .size(40.dp)
             .background(Color.LightGray)
         ) {
-          /* val imageModifier = Modifier
-             .size(40.dp)
-             .background(Color.LightGray)
-           Image(
-             painter = painterResource(id = drawable.ic_pdf),
-             contentDescription = stringResource(id = R.string.app_name),
-             contentScale = ContentScale.FillBounds,
-             modifier = imageModifier
-           )*/
-
           Image(
             painter = painterResource(id = drawable.ic_filter),
             contentDescription = stringResource(id = R.string.app_name),
