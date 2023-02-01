@@ -82,12 +82,14 @@ class MainActivity : ComponentActivity() {
     val state = remember { mutableStateOf(TextFieldValue("")) }
 
     Row(
-      modifier = Modifier.fillMaxWidth(),
+      modifier = Modifier.
+      fillMaxWidth()
+        .padding(8.dp),
       verticalAlignment = Alignment.CenterVertically
     ) {
       TextField(
         modifier = Modifier
-          .padding(8.dp)
+          .padding(2.dp)
           .clip(RoundedCornerShape(25.dp)),
         value = state.value,
         onValueChange = { value -> state.value = value },
@@ -97,7 +99,7 @@ class MainActivity : ComponentActivity() {
             Icons.Default.Search,
             contentDescription = "",
             modifier = Modifier
-              .padding(2.dp)
+              .padding(1.dp)
               .size(18.dp)
           )
         },
@@ -110,7 +112,7 @@ class MainActivity : ComponentActivity() {
                 Icons.Default.Close,
                 contentDescription = "",
                 modifier = Modifier
-                  .padding(2.dp)
+                  .padding(1.dp)
                   .size(18.dp)
               )
             }
