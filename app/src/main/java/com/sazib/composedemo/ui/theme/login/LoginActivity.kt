@@ -43,9 +43,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.sazib.composedemo.FilterActivity
 import com.sazib.composedemo.R
 import com.sazib.composedemo.ui.theme.White
+import com.sazib.composedemo.ui.theme.dashboard.MainActivity
 
 class LoginActivity : ComponentActivity() {
 
@@ -84,7 +84,8 @@ class LoginActivity : ComponentActivity() {
         onValueChange = { username_ -> viewModel.updateUsername(username_) },
         label = { Text("Email") },
         modifier = Modifier
-          .padding(8.dp)
+          .padding(16.dp)
+          .fillMaxWidth()
       )
 
       OutlinedTextField(
@@ -94,7 +95,8 @@ class LoginActivity : ComponentActivity() {
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         modifier = Modifier
-          .padding(8.dp),
+          .fillMaxWidth()
+          .padding(16.dp),
         trailingIcon = {
           val image = if (passwordVisible)
             Icons.Filled.Visibility
@@ -110,14 +112,15 @@ class LoginActivity : ComponentActivity() {
 
       Button(
         onClick = {
-          startActivity(Intent(this@LoginActivity, FilterActivity::class.java))
+          startActivity(Intent(this@LoginActivity, MainActivity::class.java))
           finish()
           // viewModel.login()
         },
         modifier = Modifier
-          .padding(8.dp)
+          .fillMaxWidth()
+          .padding(16.dp)
       ) {
-        Text(text = "Login")
+        Text(text = "Login", modifier = Modifier.padding(8.dp))
       }
     }
   }
