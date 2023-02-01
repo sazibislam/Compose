@@ -35,7 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -82,13 +81,14 @@ class MainActivity : ComponentActivity() {
     val state = remember { mutableStateOf(TextFieldValue("")) }
 
     Row(
-      modifier = Modifier.
-      fillMaxWidth()
+      modifier = Modifier
+        .fillMaxWidth(1F)
         .padding(8.dp),
       verticalAlignment = Alignment.CenterVertically
     ) {
       TextField(
         modifier = Modifier
+          .weight(.9f)
           .padding(2.dp)
           .clip(RoundedCornerShape(25.dp)),
         value = state.value,
@@ -137,29 +137,28 @@ class MainActivity : ComponentActivity() {
           }
         )
       )
-      Column {
+      Column(modifier = Modifier.weight(.1f)) {
         Box(
           modifier = Modifier
             .clip(RoundedCornerShape(15.dp))
             .size(40.dp)
             .background(Color.LightGray)
         ) {
-         /* val imageModifier = Modifier
-            .size(40.dp)
-            .background(Color.LightGray)
-          Image(
-            painter = painterResource(id = drawable.ic_pdf),
-            contentDescription = stringResource(id = R.string.app_name),
-            contentScale = ContentScale.FillBounds,
-            modifier = imageModifier
-          )*/
+          /* val imageModifier = Modifier
+             .size(40.dp)
+             .background(Color.LightGray)
+           Image(
+             painter = painterResource(id = drawable.ic_pdf),
+             contentDescription = stringResource(id = R.string.app_name),
+             contentScale = ContentScale.FillBounds,
+             modifier = imageModifier
+           )*/
 
           Image(
-            painter = painterResource(id = drawable.ic_police),
+            painter = painterResource(id = drawable.ic_filter),
             contentDescription = stringResource(id = R.string.app_name),
-            contentScale = ContentScale.Crop,
             modifier = Modifier
-              .size(35.dp)
+              .size(40.dp)
           )
 
           Box(
