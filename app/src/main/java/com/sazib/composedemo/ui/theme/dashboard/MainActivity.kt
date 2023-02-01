@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.TextField
@@ -26,7 +28,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -34,7 +35,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,65 +72,103 @@ class MainActivity : ComponentActivity() {
     ) {
 
       TopBar()
-      Spacer(modifier = Modifier.padding(8.dp))
-
-      val textState = remember { mutableStateOf(TextFieldValue("")) }
-      SearchView(textState)
-
+      Spacer(modifier = Modifier.padding(top = 8.dp))
+      SearchView()
     }
   }
 
   @Composable
-  fun SearchView(state: MutableState<TextFieldValue>) {
-    TextField(
-      value = state.value,
-      onValueChange = { value ->
-        state.value = value
-      },
-      modifier = Modifier
-        .fillMaxWidth(),
-      textStyle = TextStyle(color = Color.White, fontSize = 18.sp),
-      leadingIcon = {
-        Icon(
-          Icons.Default.Search,
-          contentDescription = "",
-          modifier = Modifier
-            .padding(8.dp)
-            .size(24.dp)
-        )
-      },
-      trailingIcon = {
-        if (state.value != TextFieldValue("")) {
-          IconButton(
-            onClick = {
-              state.value =
-                TextFieldValue("")
-            }
-          ) {
+  fun SearchView() {
+    val state = remember { mutableStateOf(TextFieldValue("")) }
 
-            Icon(
-              Icons.Default.Close,
-              contentDescription = "",
-              modifier = Modifier
-                .padding(8.dp)
-                .size(24.dp)
-            )
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+      TextField(
+        modifier = Modifier
+          .padding(8.dp)
+          .clip(RoundedCornerShape(25.dp)),
+        value = state.value,
+        onValueChange = { value -> state.value = value },
+        textStyle = TextStyle(color = Color.Black, fontSize = 16.sp),
+        leadingIcon = {
+          Icon(
+            Icons.Default.Search,
+            contentDescription = "",
+            modifier = Modifier
+              .padding(2.dp)
+              .size(18.dp)
+          )
+        },
+        trailingIcon = {
+          if (state.value != TextFieldValue("")) {
+            IconButton(onClick = { state.value = TextFieldValue("") })
+            {
+
+              Icon(
+                Icons.Default.Close,
+                contentDescription = "",
+                modifier = Modifier
+                  .padding(2.dp)
+                  .size(18.dp)
+              )
+            }
           }
-        }
-      },
-      singleLine = true,
-      shape = RectangleShape,
-      colors = TextFieldDefaults.textFieldColors(
-        textColor = Color.White,
-        cursorColor = Color.White,
-        leadingIconColor = Color.White,
-        trailingIconColor = Color.White,
-        backgroundColor = Color.White,
-        focusedIndicatorColor = Color.Transparent,
-        unfocusedIndicatorColor = Color.Transparent,
-        disabledIndicatorColor = Color.Transparent
+        },
+        singleLine = true,
+        shape = RectangleShape,
+        colors = TextFieldDefaults.textFieldColors(
+          textColor = Color.Black,
+          cursorColor = Color.Black,
+          leadingIconColor = Color.White,
+          trailingIconColor = Color.White,
+          backgroundColor = Color.LightGray,
+          focusedIndicatorColor = Color.Transparent,
+          unfocusedIndicatorColor = Color.Transparent,
+          disabledIndicatorColor = Color.Transparent
+        ),
+        keyboardActions = KeyboardActions(
+          onSearch = {
+            // keyboardController?.hide()
+            //Search Action
+          }
+        )
       )
-    )
+      Column {
+        Box(
+          modifier = Modifier
+            .clip(RoundedCornerShape(15.dp))
+            .size(40.dp)
+            .background(Color.LightGray)
+        ) {
+         /* val imageModifier = Modifier
+            .size(40.dp)
+            .background(Color.LightGray)
+          Image(
+            painter = painterResource(id = drawable.ic_pdf),
+            contentDescription = stringResource(id = R.string.app_name),
+            contentScale = ContentScale.FillBounds,
+            modifier = imageModifier
+          )*/
+
+          Image(
+            painter = painterResource(id = drawable.ic_police),
+            contentDescription = stringResource(id = R.string.app_name),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+              .size(35.dp)
+          )
+
+          Box(
+            modifier = Modifier
+              .size(10.dp)
+              .clip(CircleShape)
+              .background(Color.Green)
+          )
+        }
+      }
+    }
   }
 
   @OptIn(ExperimentalPagerApi::class)
