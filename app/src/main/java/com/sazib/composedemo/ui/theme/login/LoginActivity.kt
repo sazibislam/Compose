@@ -81,7 +81,7 @@ class LoginActivity : ComponentActivity() {
 
       OutlinedTextField(
         value = viewModel.username,
-        onValueChange = { username_ -> viewModel.updateUsername(username_) },
+        onValueChange = { username -> viewModel.updateUsername(username) },
         label = { Text("Email") },
         modifier = Modifier
           .padding(16.dp)
@@ -90,7 +90,7 @@ class LoginActivity : ComponentActivity() {
 
       OutlinedTextField(
         value = viewModel.password,
-        onValueChange = { password_ -> viewModel.updatePassword(password_) },
+        onValueChange = { password -> viewModel.updatePassword(password) },
         label = { Text("Password") },
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

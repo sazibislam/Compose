@@ -28,6 +28,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -165,7 +166,7 @@ class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalPagerApi::class)
   @Composable
   private fun TopBar() {
-    val slideImage = remember { mutableStateOf(drawable.banner) }
+    val slideImage = remember { mutableIntStateOf(drawable.banner) }
     val state: PagerState = rememberPagerState()
 
     HorizontalPager(
@@ -178,9 +179,9 @@ class MainActivity : ComponentActivity() {
     ) { page ->
 
       when (page) {
-        0 -> slideImage.value = drawable.banner
-        1 -> slideImage.value = drawable.banner
-        2 -> slideImage.value = drawable.banner
+        0 -> slideImage.intValue = drawable.banner
+        1 -> slideImage.intValue = drawable.banner
+        2 -> slideImage.intValue = drawable.banner
       }
 
       Column(
@@ -190,7 +191,7 @@ class MainActivity : ComponentActivity() {
         )
       ) {
         Image(
-          painterResource(slideImage.value),
+          painterResource(slideImage.intValue),
           contentDescription = ""
         )
       }
